@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "614178011755",
+    "project_id": "dishdash-c5193",
+    "storage_bucket": "dishdash-c5193.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:614178011755:android:19a710840a4baf007acf2e",
+        "android_client_info": {
+          "package_name": "com.example.spooncular"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "614178011755-7blq72l01bvhfsn5u32ht7r77nuihmil.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGCUgVqfUQQFWkrTYdtyuQmw0VvJVmLbw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "614178011755-7blq72l01bvhfsn5u32ht7r77nuihmil.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
