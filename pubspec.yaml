@@ -1,7 +1,7 @@
 name: DishDash
 description: A new Flutter project.
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none'
 
 
 version: 1.0.0+1
@@ -30,11 +30,14 @@ dependencies:
   share_plus: ^7.0.2
   flutter_svg: ^2.0.5
   shared_preferences: ^2.0.20
+  floor: ^1.4.2
+  floor_generator: ^1.4.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  build_runner: ^2.1.2
 
 flutter:
   uses-material-design: true
