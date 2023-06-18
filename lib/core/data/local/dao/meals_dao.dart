@@ -1,4 +1,4 @@
-import 'package:DishDash/feature/saved/data/datasource/local/entity/meal_entity.dart';
+import 'package:DishDash/core/data/local/entity/meal_entity.dart';
 import 'package:floor/floor.dart';
 
 @dao

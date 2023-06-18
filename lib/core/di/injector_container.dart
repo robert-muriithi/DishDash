@@ -1,3 +1,4 @@
+import 'package:DishDash/core/data/local/database/saved_meal_db.dart';
 import 'package:DishDash/core/network/network.dart';
 import 'package:DishDash/feature/home/data/datasources/remote/categories_remote_data_source.dart';
 import 'package:DishDash/feature/home/data/datasources/remote/meal_by_category_remote_data_source.dart';
@@ -60,8 +61,21 @@ Future<void> initExternal() async{
   sl.registerLazySingleton(() => sharedPreferences);
 
   //Dio
-  sl.registerLazySingleton(() => Dio());
+  sl.registerFactory<Dio>(() {
+    Dio dio = Dio();
+    dio.options.connectTimeout =  const Duration(seconds: 30);
+    dio.options.receiveTimeout =  const Duration(seconds: 30);
+    return dio;
+  });
 
   //Network info
   sl.registerLazySingleton(() => InternetConnectionChecker());
+
+  //Database
+  final database = await $FloorAppDatabase
+      .databaseBuilder('app_database.db')
+      .build();
+
+  sl.registerFactory(() => database);
+
 }

@@ -4,7 +4,7 @@ import 'package:floor/floor.dart';
 
 @Entity(tableName: 'meal')
 class MealEntity extends Equatable {
-  String? idMeal;
+  @primaryKey String? idMeal;
   String? strMeal;
   String? strDrinkAlternate;
   String? strCategory;
