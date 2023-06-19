@@ -12,6 +12,7 @@ import 'package:DishDash/feature/home/domain/usecase/get_meal_details.dart';
 import 'package:DishDash/feature/home/presentation/bloc/categories/categories_cubit.dart';
 import 'package:DishDash/feature/home/presentation/bloc/meal_details_cubit.dart';
 import 'package:DishDash/feature/home/presentation/bloc/meals/meals_cubit.dart';
+import 'package:DishDash/feature/saved/data/datasource/saved_meals_local_data_source.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:dio/dio.dart';
@@ -45,6 +46,7 @@ void initFeatures() {
   //Data sources
   sl.registerLazySingleton<CategoriesRemoteDataSource>(() => CategoriesRemoteDataSourceImpl(sl()));
   sl.registerLazySingleton<MealByCategoryRemoteDataSource>(() => MealByCategoryRemoteDataSourceImpl(sl()));
+  sl.registerLazySingleton<SavedMealsLocalDataSource>(() => SavedMealsLocalDataSourceImpl(sl()));
 
 
 
