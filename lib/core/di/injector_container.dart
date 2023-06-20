@@ -9,10 +9,14 @@ import 'package:DishDash/feature/home/domain/repository/meals_by_category_reposi
 import 'package:DishDash/feature/home/domain/usecase/get_food_categories_usecase.dart';
 import 'package:DishDash/feature/home/domain/usecase/get_meal_by_category_usecase.dart';
 import 'package:DishDash/feature/home/domain/usecase/get_meal_details.dart';
-import 'package:DishDash/feature/home/presentation/bloc/categories/categories_cubit.dart';
-import 'package:DishDash/feature/home/presentation/bloc/meal_details_cubit.dart';
-import 'package:DishDash/feature/home/presentation/bloc/meals/meals_cubit.dart';
+import 'package:DishDash/feature/home/domain/usecase/save_meal_usecase.dart';
+import 'package:DishDash/feature/home/presentation/cubits/categories/categories_cubit.dart';
+import 'package:DishDash/feature/home/presentation/cubits/meal_details_cubit.dart';
+import 'package:DishDash/feature/home/presentation/cubits/meals/meals_cubit.dart';
+import 'package:DishDash/feature/home/presentation/cubits/save/save_meal_cubit.dart';
 import 'package:DishDash/feature/saved/data/datasource/saved_meals_local_data_source.dart';
+import 'package:DishDash/feature/saved/data/repository/saved_meals_repository_impl.dart';
+import 'package:DishDash/feature/saved/domain/repository/saved_meals_repository.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:dio/dio.dart';
@@ -32,15 +36,18 @@ void initFeatures() {
   sl.registerFactory<CategoriesCubit>(() => CategoriesCubit(sl(), sl()));
   sl.registerFactory<MealsCubit>(() => MealsCubit(sl()));
   sl.registerFactory<MealDetailsCubit>(() => MealDetailsCubit(sl()));
+  sl.registerFactory<SaveMealCubit>(() => SaveMealCubit(sl()));
 
   //Use cases
   sl.registerLazySingleton<GetFoodCategoriesUsCase>(() => GetFoodCategoriesUsCase(sl()));
   sl.registerLazySingleton<GetMealsByCategoryUseCase>(() => GetMealsByCategoryUseCase(sl()));
   sl.registerLazySingleton<GetMealDetailsUseCase>(() => GetMealDetailsUseCase(sl()));
+  sl.registerLazySingleton<SaveMealUseCase>(() => SaveMealUseCase(sl()));
 
   //Repositories
   sl.registerLazySingleton<FoodCategoriesRepository>(() => FoodCategoriesRepositoryImpl(sl(), sl()));
   sl.registerLazySingleton<MealByCategoryRepository>(() => MealByCategoryRepositoryImpl(sl(), sl()));
+  sl.registerLazySingleton<SavedMealsRepository>(() => SavedMealsRepositoryImpl(sl()));
 
 
   //Data sources
