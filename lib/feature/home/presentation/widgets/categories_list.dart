@@ -1,8 +1,8 @@
 import 'package:DishDash/config/theme/colors.dart';
 import 'package:DishDash/core/presentation/widgets/text/small_text.dart';
 import 'package:DishDash/feature/home/domain/models/categories_model.dart';
-import 'package:DishDash/feature/home/presentation/bloc/categories/categories_cubit.dart';
-import 'package:DishDash/feature/home/presentation/bloc/meals/meals_cubit.dart';
+import 'package:DishDash/feature/home/presentation/cubits/categories/categories_cubit.dart';
+import 'package:DishDash/feature/home/presentation/cubits/meals/meals_cubit.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

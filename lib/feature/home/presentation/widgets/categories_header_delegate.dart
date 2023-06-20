@@ -1,7 +1,7 @@
 
 import 'package:DishDash/core/di/injector_container.dart';
 import 'package:DishDash/core/utils/utils.dart';
-import 'package:DishDash/feature/home/presentation/bloc/categories/categories_cubit.dart';
+import 'package:DishDash/feature/home/presentation/cubits/categories/categories_cubit.dart';
 import 'package:DishDash/feature/home/presentation/widgets/categories_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
