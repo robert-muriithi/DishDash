@@ -31,4 +31,14 @@ class SavedMealsRepositoryImpl implements SavedMealsRepository {
       return Left(DatabaseFailure(e.message));
     }
   }
+
+  @override
+  Future<Either<Failure, void>> insertSavedMeal(SavedFoodModel meal) async {
+    try{
+      await dataSource.insertSavedMeal(meal.toEntity());
+      return const Right(null);
+    } on DatabaseException catch(e){
+      return Left(DatabaseFailure(e.message));
+    }
+  }
 }

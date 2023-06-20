@@ -1,8 +1,12 @@
 import 'package:DishDash/config/theme/colors.dart';
 import 'package:DishDash/feature/home/domain/models/meal_details.dart';
+import 'package:DishDash/feature/home/presentation/cubits/save/save_meal_cubit.dart';
+import 'package:DishDash/feature/home/presentation/utils/mapper.dart';
+import 'package:DishDash/feature/saved/domain/models/saved_food_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:DishDash/core/utils/utils.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -345,13 +349,7 @@ class MealDetailsWidget extends StatelessWidget {
   List<Widget> buildAppBarActions(BuildContext context) {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return [
-      IconButton(
-        icon:  Icon(
-            Icons.favorite_border,
-          color: isDarkMode ? AppColors.white : AppColors.white,
-        ),
-        onPressed: () {},
-      ),
+      _addFavorite(meal[0], isDarkMode),
       IconButton(
         icon:  Icon(
             Icons.share,
@@ -364,4 +362,38 @@ class MealDetailsWidget extends StatelessWidget {
       ),
     ];
   }
+
+  BlocListener<SaveMealCubit, SaveMealState> _addFavorite(MealDetailsModel meal, bool isDarkMode) {
+    return BlocListener<SaveMealCubit, SaveMealState>(
+      listener: (context, state) {
+        if (state.isSaved == true) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Added to Saved Meals'),
+              duration: Duration(seconds: 1),
+            ),
+          );
+        }
+      },
+      child: BlocBuilder<SaveMealCubit, SaveMealState>(
+        builder: (context, state) {
+          return IconButton(
+            icon: Icon(
+              Icons.favorite,
+              color: state.isSaved == true ? Colors.red : isDarkMode ? AppColors.white : AppColors.white,
+            ),
+            onPressed: () {
+              context.read<SaveMealCubit>().saveMeal(toMealDetailsModel(meal));
+            },
+          );
+        },
+      ),
+    );
+  }
+
+
 }
+
+
+
+

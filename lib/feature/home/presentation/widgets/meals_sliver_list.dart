@@ -1,5 +1,5 @@
 import 'package:DishDash/core/utils/utils.dart';
-import 'package:DishDash/feature/home/presentation/bloc/meals/meals_cubit.dart';
+import 'package:DishDash/feature/home/presentation/cubits/meals/meals_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

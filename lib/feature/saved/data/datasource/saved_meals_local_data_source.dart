@@ -6,6 +6,7 @@ import 'package:DishDash/core/errors/exceptions.dart';
 abstract class SavedMealsLocalDataSource{
   Future<List<MealEntity>> getAllSavedMeals();
   Future<void> deleteSavedMeal(String mealId);
+  Future<void> insertSavedMeal(MealEntity meal);
 }
 
 class SavedMealsLocalDataSourceImpl implements SavedMealsLocalDataSource {
@@ -27,6 +28,16 @@ class SavedMealsLocalDataSourceImpl implements SavedMealsLocalDataSource {
     try{
      return database.mealsDao.getAllFavorites();
     }catch (e){
+      throw DatabaseException(message :e.toString(),);
+    }
+  }
+
+  @override
+  Future<void> insertSavedMeal(MealEntity meal) async {
+    try{
+      final dao = database.mealsDao;
+      await dao.insertToFavorites(meal);
+    } catch(e){
       throw DatabaseException(message :e.toString(),);
     }
   }

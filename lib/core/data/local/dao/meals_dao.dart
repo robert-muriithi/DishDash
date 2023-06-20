@@ -15,4 +15,7 @@ abstract class MealsDao {
   @Query('DELETE FROM meal WHERE id = :id')
   Future<void> deleteById(String id);
 
+  //Check if the meal is already in the database
+  @Query('SELECT * FROM meal WHERE id = :id')
+  Future<MealEntity?> getMealById(String id);
 }

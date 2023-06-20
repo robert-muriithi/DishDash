@@ -7,4 +7,5 @@ import 'package:dartz/dartz.dart';
 abstract class SavedMealsRepository {
   Future<Either<Failure, List<SavedFoodModel>>> getSavedMeals();
   Future<Either<Failure, void>> deleteSavedMeal(String mealId);
+  Future<Either<Failure, void>> insertSavedMeal(SavedFoodModel meal);
 }

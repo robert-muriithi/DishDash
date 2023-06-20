@@ -1,6 +1,7 @@
+import 'package:DishDash/feature/home/domain/models/meal_details.dart';
 import 'package:equatable/equatable.dart';
 
-class SavedFoodModel extends Equatable{
+class SavedFoodModel extends  Equatable{
   String? idMeal;
   String? strMeal;
   String? strDrinkAlternate;

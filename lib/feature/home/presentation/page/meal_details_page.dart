@@ -1,7 +1,8 @@
 import 'package:DishDash/core/di/injector_container.dart';
 import 'package:DishDash/core/presentation/widgets/loading/loading_widget.dart';
 import 'package:DishDash/core/utils/utils.dart';
-import 'package:DishDash/feature/home/presentation/bloc/meal_details_cubit.dart';
+import 'package:DishDash/feature/home/presentation/cubits/meal_details_cubit.dart';
+import 'package:DishDash/feature/home/presentation/cubits/save/save_meal_cubit.dart';
 import 'package:DishDash/feature/home/presentation/widgets/meal_details_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,6 +18,9 @@ class MealDetailsPage extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => sl<MealDetailsCubit>()..fetchMealDetails(id),
+        ),
+        BlocProvider(
+          create: (context) => sl<SaveMealCubit>()
         ),
       ],
       child: Scaffold(
