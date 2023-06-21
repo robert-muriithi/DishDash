@@ -1,21 +1,28 @@
 import 'package:DishDash/config/theme/colors.dart';
-import 'package:flutter/material.dart';
-import 'core/presentation/navigation/navigation_container.dart';
-import 'core/di/injector_container.dart' as di;
-import 'firebase_options.dart';
+import 'package:DishDash/core/di/injector_container.dart';
+import 'package:DishDash/feature/onboarding/presentation/pages/onboarding_screen_container.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'core/di/injector_container.dart' as di;
+import 'core/presentation/navigation/navigation_container.dart';
+import 'firebase_options.dart';
 
 
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  await di.init();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(const MyApp());
+  await di.init();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+   MyApp({super.key});
+  final sharedPrefs = sl<SharedPreferences>();
+  final firebaseAuth = sl<FirebaseAuth>();
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +31,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(useMaterial3: true, colorScheme: AppColors.lightColorScheme),
       darkTheme: ThemeData(useMaterial3: true, colorScheme: AppColors.darkColorScheme),
       themeMode: ThemeMode.system,
-      home: const BottomNavigationContainer(),
-      //home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      //home: sharedPrefs.getBool('hasCompletedOnBoarding') ?? false ? const BottomNavigationContainer() : const OnBoardingScreen(),
+      home: firebaseAuth.currentUser != null ? const BottomNavigationContainer() : const OnBoardingScreen(),
     );
   }
 }
