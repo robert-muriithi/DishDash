@@ -34,6 +34,8 @@ dependencies:
   floor_generator: ^1.4.2
   firebase_auth: ^4.6.3
   google_sign_in: ^6.1.4
+  font_awesome_flutter: ^10.4.0
+  email_validator: ^2.1.17
 
 dev_dependencies:
   flutter_test:
