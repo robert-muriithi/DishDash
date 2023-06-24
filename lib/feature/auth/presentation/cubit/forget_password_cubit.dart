@@ -1,8 +1,7 @@
-import 'package:DishDash/core/params/params.dart';
 import 'package:DishDash/core/utils/utils.dart';
 import 'package:DishDash/feature/auth/domain/usecase/reset_password_usecase.dart';
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'forget_password_state.dart';
 

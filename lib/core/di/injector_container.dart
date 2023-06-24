@@ -30,6 +30,11 @@ import 'package:DishDash/feature/saved/domain/repository/saved_meals_repository.
 import 'package:DishDash/feature/saved/domain/usecase/delete_saved_meal_usecase.dart';
 import 'package:DishDash/feature/saved/domain/usecase/get_saved_meals.dart';
 import 'package:DishDash/feature/saved/presentation/cubits/saved_meals_cubit.dart';
+import 'package:DishDash/feature/search/data/datasource/search_remote_data_source.dart';
+import 'package:DishDash/feature/search/data/repository/search_repository_impl.dart';
+import 'package:DishDash/feature/search/domain/repository/search_repository.dart';
+import 'package:DishDash/feature/search/domain/usecase/search_meal_usecase.dart';
+import 'package:DishDash/feature/search/presentation/cubits/search_cubit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -66,6 +71,7 @@ void initFeatures() {
   sl.registerFactory<RegisterCubit>(() => RegisterCubit(sl()));
   sl.registerFactory<TogglePasswordCubit>(() => TogglePasswordCubit());
   sl.registerFactory<ForgetPasswordCubit>(() => ForgetPasswordCubit(sl()));
+  sl.registerFactory<SearchCubit>(() => SearchCubit(sl()));
 
 
   //Use cases
@@ -87,6 +93,8 @@ void initFeatures() {
       () => SignInWithGoogleUseCase(sl()));
   sl.registerLazySingleton<ResetPasswordUseCase>(
       () => ResetPasswordUseCase(sl()));
+  sl.registerLazySingleton<SearchMealUseCase>(
+      () => SearchMealUseCase(sl()));
 
   //Repositories
   sl.registerLazySingleton<FoodCategoriesRepository>(
@@ -99,6 +107,8 @@ void initFeatures() {
       () => OnBoardingScreensRepositoryImpl(localDataSource: sl()));
   sl.registerLazySingleton<AuthRepository>(
       () => AuthRepositoryImpl(sl(), sl()));
+  sl.registerLazySingleton<SearchRepository>(
+      () => SearchRepositoryImpl(sl()));
 
   //Data sources
   sl.registerLazySingleton<CategoriesRemoteDataSource>(
@@ -113,6 +123,8 @@ void initFeatures() {
       () => AuthLocalDataSourceImpl(sl()));
   sl.registerLazySingleton<FirebaseRemoteDataSource>(
       () => FirebaseRemoteDataSourceImpl(sl()));
+  sl.registerLazySingleton<SearchRemoteDataSource>(
+      () => SearchRemoteDataSourceImpl(sl()));
 }
 
 void initCore() {

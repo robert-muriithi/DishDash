@@ -8,6 +8,7 @@ import 'package:DishDash/feature/home/presentation/page/meal_details_page.dart';
 import 'package:DishDash/feature/home/presentation/widgets/categories_header_delegate.dart';
 import 'package:DishDash/feature/home/presentation/widgets/heading_widget.dart';
 import 'package:DishDash/feature/home/presentation/widgets/search_container.dart';
+import 'package:DishDash/feature/search/presentation/pages/search_page.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -71,7 +72,9 @@ class _HomePageState extends State<HomePage> {
                     Visibility(
                       visible: _showTitle,
                       child: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          showSearch(context: context, delegate: SearchPage());
+                        },
                         icon: const Icon(Icons.search),
                       ),
                     )
