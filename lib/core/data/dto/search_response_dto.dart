@@ -1,18 +1,20 @@
+import 'package:DishDash/feature/search/domain/model/search_results_model.dart';
+
 class SearchResponseDto {
-  List<Meals> meals;
+  List<SearchMealDto> meals;
 
   SearchResponseDto({required this.meals});
 
   factory SearchResponseDto.fromJson(Map<String, dynamic> json) {
     return SearchResponseDto(
-      meals: List<Meals>.from(json["meals"].map((x) => Meals.fromJson(x))),
+      meals: List<SearchMealDto>.from(json["meals"].map((x) => SearchMealDto.fromJson(x))),
     );
   }
 
 }
 
-class Meals {
-  String idMeal;
+class SearchMealDto extends SearchResultsModel {
+ /* String idMeal;
   String strMeal;
   String strCategory;
   String strArea;
@@ -60,62 +62,61 @@ class Meals {
   String? strMeasure18;
   String? strMeasure19;
   String? strMeasure20;
-  String? strSource;
-
-  Meals(
+  String? strSource;*/
+  SearchMealDto(
       {
-        required this.strTags,
-        required this.idMeal,
-        required this.strMeal,
-        required this.strCategory,
-        required this.strArea,
-        required this.strInstructions,
-        required this.strMealThumb,
-        required this.strYoutube,
-        required this.strIngredient1,
-        required this.strIngredient2,
-        required this.strIngredient3,
-        required this.strIngredient4,
-        required this.strIngredient5,
-        required this.strIngredient6,
-        required this.strIngredient7,
-        required this.strIngredient8,
-        required this.strIngredient9,
-        required this.strIngredient10,
-        required this.strIngredient11,
-        required this.strIngredient12,
-        required this.strIngredient13,
-        required this.strIngredient14,
-        required this.strIngredient15,
-         this.strIngredient16,
-         this.strIngredient17,
-         this.strIngredient18,
-         this.strIngredient19,
-         this.strIngredient20,
-        required this.strMeasure1,
-        required this.strMeasure2,
-        required this.strMeasure3,
-        required this.strMeasure4,
-        required this.strMeasure5,
-        required this.strMeasure6,
-        required this.strMeasure7,
-        required this.strMeasure8,
-        required this.strMeasure9,
-        required this.strMeasure10,
-        required this.strMeasure11,
-        required this.strMeasure12,
-        required this.strMeasure13,
-        required this.strMeasure14,
-        required this.strMeasure15,
-         this.strMeasure16,
-         this.strMeasure17,
-         this.strMeasure18,
-         this.strMeasure19,
-         this.strMeasure20,
-         this.strSource,});
+         super.strTags,
+         super.idMeal,
+         super.strMeal,
+         super.strCategory,
+         super.strArea,
+         super.strInstructions,
+         super.strMealThumb,
+         super.strYoutube,
+         super.strIngredient1,
+         super.strIngredient2,
+         super.strIngredient3,
+         super.strIngredient4,
+         super.strIngredient5,
+         super.strIngredient6,
+         super.strIngredient7,
+         super.strIngredient8,
+         super.strIngredient9,
+         super.strIngredient10,
+         super.strIngredient11,
+         super.strIngredient12,
+         super.strIngredient13,
+         super.strIngredient14,
+         super.strIngredient15,
+        super.strIngredient16,
+        super.strIngredient17,
+        super.strIngredient18,
+        super.strIngredient19,
+        super.strIngredient20,
+         super.strMeasure1,
+         super.strMeasure2,
+         super.strMeasure3,
+         super.strMeasure4,
+         super.strMeasure5,
+         super.strMeasure6,
+         super.strMeasure7,
+         super.strMeasure8,
+         super.strMeasure9,
+         super.strMeasure10,
+         super.strMeasure11,
+         super.strMeasure12,
+         super.strMeasure13,
+         super.strMeasure14,
+         super.strMeasure15,
+        super.strMeasure16,
+        super.strMeasure17,
+        super.strMeasure18,
+        super.strMeasure19,
+        super.strMeasure20,
+        super.strSource,});
 
-  factory Meals.fromJson(Map<String, dynamic> json) {
-    return Meals(
+  factory SearchMealDto.fromJson(Map<String, dynamic> json) {
+    return SearchMealDto(
     idMeal: json['idMeal'],
     strMeal : json['strMeal'],
     strCategory : json['strCategory'],
