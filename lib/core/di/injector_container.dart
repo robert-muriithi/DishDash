@@ -35,6 +35,7 @@ import 'package:DishDash/feature/search/data/repository/search_repository_impl.d
 import 'package:DishDash/feature/search/domain/repository/search_repository.dart';
 import 'package:DishDash/feature/search/domain/usecase/search_meal_usecase.dart';
 import 'package:DishDash/feature/search/presentation/cubits/search_cubit.dart';
+import 'package:DishDash/feature/settings/presentation/bloc/theme_cubit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -72,6 +73,7 @@ void initFeatures() {
   sl.registerFactory<TogglePasswordCubit>(() => TogglePasswordCubit());
   sl.registerFactory<ForgetPasswordCubit>(() => ForgetPasswordCubit(sl()));
   sl.registerFactory<SearchCubit>(() => SearchCubit(sl()));
+  sl.registerFactory<ThemeCubit>(() => ThemeCubit());
 
 
   //Use cases
