@@ -15,7 +15,7 @@ String mapFailureToMessage(Failure failure) {
   }
 }
 
-enum UIState { initial, loading, success, error }
+enum UIState { initial, loading, success, error, empty }
 
 extension MealDetailsModelExtension on MealDetailsModel {
   String? getIngredient(int index) {

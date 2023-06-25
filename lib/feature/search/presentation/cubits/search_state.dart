@@ -1,7 +1,6 @@
 part of 'search_cubit.dart';
 
  class SearchState extends Equatable {
-
     final List<SearchResultsModel>? results;
     final UIState uiState;
     final String? message;

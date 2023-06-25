@@ -1,7 +1,7 @@
 import 'package:DishDash/feature/search/domain/model/search_results_model.dart';
 
 class SearchResponseDto {
-  List<SearchMealDto> meals;
+  List<SearchMealDto>? meals;
 
   SearchResponseDto({required this.meals});
 

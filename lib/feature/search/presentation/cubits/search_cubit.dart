@@ -1,3 +1,4 @@
+import 'package:DishDash/core/errors/failures.dart';
 import 'package:DishDash/core/utils/utils.dart';
 import 'package:DishDash/feature/search/domain/model/search_results_model.dart';
 import 'package:DishDash/feature/search/domain/usecase/search_meal_usecase.dart';
@@ -12,10 +13,16 @@ class SearchCubit extends Cubit<SearchState> {
 
   Future<void> searchMeal(String query) async {
     emit(state.copyWith(uiState: UIState.loading));
-    final result = await searchMealUseCase(query);
-    result.fold(
-      (failure) => emit(state.copyWith(uiState: UIState.error, message: mapFailureToMessage(failure))),
-      (meals) => emit(state.copyWith(uiState: UIState.success, results: meals)),
-    );
-  }
+      final result = await searchMealUseCase(query);
+      result.fold(
+            (failure) => emit(state.copyWith(uiState: UIState.error, message: mapFailureToMessage(failure))),
+            (meals) {
+          if(meals.isEmpty) {
+            emit(state.copyWith(uiState: UIState.empty));
+          } else {
+            emit(state.copyWith(uiState: UIState.success, results: meals));
+          }
+        },
+      );
+    }
 }
