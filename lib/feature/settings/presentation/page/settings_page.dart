@@ -131,33 +131,37 @@ class SettingsPage extends StatelessWidget {
                             const lightThemeMode = ThemeMode.light;
                             const darkThemeMode = ThemeMode.dark;
                             showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return AlertDialog(
-                                    title: const Text("Select Theme"),
-                                    content: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        ListTile(
-                                          title: const Text("Light"),
-                                          onTap: () {
-                                            Navigator.pop(context);
-                                            final isDarkMode = Theme.of(context).brightness == Brightness.dark;
-                                            ThemeCubit().changeTheme(lightThemeMode);
-
-                                          },
-                                        ),
-                                        ListTile(
-                                          title: const Text("Dark"),
-                                          onTap: () {
-                                            Navigator.pop(context);
-                                            ThemeCubit().changeTheme(darkThemeMode);
-                                          },
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                });
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title: const Text("Select Theme"),
+                                  content: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      ListTile(
+                                        title: const Text("Light"),
+                                        onTap: () {
+                                          Navigator.pop(context);
+                                          final isDarkMode =
+                                              Theme.of(context).brightness ==
+                                                  Brightness.dark;
+                                          ThemeCubit()
+                                              .changeTheme(lightThemeMode);
+                                        },
+                                      ),
+                                      ListTile(
+                                        title: const Text("Dark"),
+                                        onTap: () {
+                                          Navigator.pop(context);
+                                          ThemeCubit()
+                                              .changeTheme(darkThemeMode);
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
+                            );
                           },
                         ),
                       ),
@@ -320,7 +324,6 @@ class SettingsPage extends StatelessWidget {
                         Text(
                             style: TextStyle(
                               fontSize: 12,
-
                             ),
                             'Version 1.0.0'),
                         Text(
@@ -343,5 +346,4 @@ class SettingsPage extends StatelessWidget {
   void _toggleTheme(BuildContext context, ThemeMode themeMode) {
     BlocProvider.of<ThemeCubit>(context).changeTheme(themeMode);
   }
-
 }
