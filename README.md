@@ -60,7 +60,6 @@ To run this project,
 - Clone this repository
 - Run `flutter pub get` to install all the dependencies
 - Run `flutter pub run build_runner build ` to generate the files for floor database
-- Run `flutter pub run flutter_launcher_icons:main && flutter pub run flutter_native_splash:create`
 - Run `flutter run` to run the app on your device or emulator
 
 ## Disclaimer.
