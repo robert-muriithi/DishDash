@@ -68,6 +68,7 @@ class _HomePageState extends State<HomePage> {
               controller: _scrollController,
               slivers: [
                 SliverAppBar(
+                  automaticallyImplyLeading: false,
                   actions: [
                     Visibility(
                       visible: _showTitle,

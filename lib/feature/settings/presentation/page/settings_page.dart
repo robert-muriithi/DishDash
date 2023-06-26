@@ -34,6 +34,7 @@ class SettingsPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text("Settings"),
+          automaticallyImplyLeading: false,
         ),
         body: SingleChildScrollView(
           child: Column(

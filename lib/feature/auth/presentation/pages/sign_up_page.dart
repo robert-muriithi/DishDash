@@ -254,13 +254,18 @@ class SignUpPage extends StatelessWidget {
             ),
           );
         } else if (state.uiState == UIState.success) {
+          Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => const BottomNavigationContainer()),
+                (route) => route.isFirst,
+          );
 
-          Navigator.pushReplacement(
+          /*Navigator.pushReplacement(
             context,
             MaterialPageRoute(
               builder: (context) => const BottomNavigationContainer(),
             ),
-          );
+          );*/
         }
       },
       builder: (context, state) {

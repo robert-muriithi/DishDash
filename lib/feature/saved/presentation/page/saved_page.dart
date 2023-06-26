@@ -21,6 +21,7 @@ class SavedPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text("Saved Meals"),
+          automaticallyImplyLeading: false,
         ),
         body: _buildBody(context),
       ),
